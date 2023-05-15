@@ -1,7 +1,12 @@
-led.plot(2, 2)
-for (let index = 0; index < 5; index++) {
-    led.setBrightness(0)
-    led.fadeIn(100)
-basic.pause(100)
-    led.fadeOut(100)
-}
+let strip = neopixel.create(DigitalPin.P13, 4, NeoPixelMode.RGBW)
+strip.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+strip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
+strip.setPixelColor(2, neopixel.colors(NeoPixelColors.Green))
+strip.setPixelColor(3, neopixel.colors(NeoPixelColors.Blue))
+strip.setBrightness(4)
+strip.show()
+basic.forever(function () {
+    basic.pause(100)
+    strip.rotate(1)
+    strip.show()
+})
